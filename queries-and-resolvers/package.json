@@ -5,14 +5,18 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -r sucrase/register src/index.js"
+    "dev": "nodemon -r sucrase/register src/index.js",
+    "server": "json-server --watch db.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^3.13.0",
-    "graphql": "^16.8.1"
+    "faker": "^6.6.6",
+    "graphql": "^16.8.1",
+    "json-server": "^1.0.0-alpha.21",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
