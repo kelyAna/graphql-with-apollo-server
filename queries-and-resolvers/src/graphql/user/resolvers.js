@@ -1,11 +1,14 @@
-const user = async (_, __, { fetch }) => {
-  const user = await fetch('http://localhost:3000/users/602');
-  return user.json();
+const users = async (_, { input }, { getUsers }) => {
+  const apiFiltersInput = new URLSearchParams(input);
+  const users = await getUsers('/?' + apiFiltersInput);
+
+  return users.json();
 };
 
-const users = async (_, __, { fetch }) => {
-  const users = await fetch('http://localhost:3000/users');
-  return users.json();
+const user = async (_, { id }, { getUsers }) => {
+  const response = await getUsers('/' + id);
+  const user = await response.json();
+  return user;
 };
 
 export const userResolvers = {

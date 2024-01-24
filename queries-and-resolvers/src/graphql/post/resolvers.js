@@ -1,30 +1,21 @@
-const post = () => {
-  return {
-    id: '1',
-    title: 'Colação de grau 1',
-  };
+const post = async (_, { id }, { getPosts }) => {
+  const response = await getPosts('/' + id);
+  return response.json();
 };
 
-const posts = () => {
-  return [
-    {
-      id: '1',
-      title: 'Colação de grau 1',
-    },
-    {
-      id: '2',
-      title: 'Colação de grau 2',
-    },
-    {
-      id: '3',
-      title: 'Colação de grau 3',
-    },
-  ];
+const posts = async (_, { input }, { getPosts }) => {
+  const apiFiltersInput = new URLSearchParams(input);
+
+  const response = await getPosts('/?' + apiFiltersInput);
+  return response.json();
 };
 
 export const postResolvers = {
-  Query: {
-    post,
-    posts,
+  Query: { post, posts },
+  Post: {
+    unixTimestamp: ({ createdAt }) => {
+      const timestamp = new Date(createdAt).getTime() / 1000;
+      return Math.floor(timestamp);
+    },
   },
 };
