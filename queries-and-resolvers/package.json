@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -r dotenv/config -r sucrase/register src/index.js",
+    "dev": "nodemon --exec ts-node src/index.ts",
     "server": "json-server --watch db.json"
   },
   "keywords": [],
@@ -16,17 +16,21 @@
     "apollo-server": "^3.13.0",
     "dataloader": "^2.2.2",
     "dotenv": "^16.4.1",
-    "faker": "^6.6.6",
+    "faker": "^5.5.3",
     "graphql": "^16.8.1",
     "json-server": "^1.0.0-alpha.21",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+    "@types/node": "^20.11.7",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.2",
-    "nodemon": "^3.0.2",
+    "nodemon": "^3.0.3",
     "prettier": "^3.1.1",
-    "sucrase": "^3.35.0"
+    "sucrase": "^3.35.0",
+    "ts-node": "^10.9.2"
   }
 }

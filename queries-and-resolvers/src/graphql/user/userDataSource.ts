@@ -1,7 +1,9 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
-import { makeUserDataLoader } from './dataloaders';
+import { makeUserDataLoader } from '../loaders/userLoader';
 
 export class UsersApi extends RESTDataSource {
+  private dataLoader: ReturnType<typeof makeUserDataLoader>
+
   constructor() {
     super();
     this.baseURL = process.env.API_URL + '/users/';
@@ -16,7 +18,7 @@ export class UsersApi extends RESTDataSource {
     });
   }
 
-  async getUser(id) {
+  async getUser(id: string) {
     return this.get(id, undefined, {
       cacheOptions: {
         ttl: 60,
@@ -24,7 +26,7 @@ export class UsersApi extends RESTDataSource {
     });
   }
 
-  batchLoadById(id) {
+  batchLoadById(id: string) {
     return this.dataLoader.load(id);
   }
 }
