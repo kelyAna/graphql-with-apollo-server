@@ -1,6 +1,6 @@
 import { ValidationError } from 'apollo-server-errors'
 import { PostInput, UserDataSource } from '../types'
-import { checkUserExists } from './checkUserExists'
+import { checkUserExists } from '../utils/checkUserExists'
 
 export const createPostFn = async (postData, dataSource) => {
   const postInfo = await createPostInfo(postData, dataSource)

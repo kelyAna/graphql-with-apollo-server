@@ -1,7 +1,7 @@
 import { RESTDataSource } from 'apollo-datasource-rest'
 import { makePostDataLoader } from '../loaders/postLoader'
 import * as dotenv from 'dotenv';
-import { createPostFn, deletePostFn, updatePostFn } from '../utils/post-repository';
+import { createPostFn, deletePostFn, updatePostFn } from './post-repository';
 import { PostInput } from '../types';
 dotenv.config();
 

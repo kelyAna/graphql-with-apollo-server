@@ -1,6 +1,8 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 import { makeUserDataLoader } from '../loaders/userLoader';
 import * as dotenv from 'dotenv';
+import { UserInput } from '../types';
+import { createUserFn, deleteUserFn, updateUserFn } from './user-repository';
 dotenv.config();
 
 export class UsersApi extends RESTDataSource {
@@ -26,6 +28,18 @@ export class UsersApi extends RESTDataSource {
         ttl: 60,
       },
     });
+  }
+
+  async createUser(userData: UserInput) {
+    return createUserFn(userData, this)
+  }
+
+  async deleteUser(userId: string) {
+    return deleteUserFn(userId, this)
+  }
+
+  async updateUser(userId: string, userData: UserInput) {
+    return updateUserFn(userId, userData, this);
   }
 
   batchLoadById(id: string) {

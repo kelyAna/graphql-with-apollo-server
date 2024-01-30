@@ -1,24 +1,31 @@
 const users = async (_, { input }, { dataSources }) => {
-  const apiFiltersInput = new URLSearchParams(input);
-  const users = await dataSources.postAPi.getUsers('/?' + apiFiltersInput);
-
+  const users = await dataSources.userApi.getUsers(input);
   return users;
 };
 
 const user = async (_, { id }, { dataSources }) => {
-  console.log(dataSources)
-  const user = await dataSources.postAPi.getUser('/' + id);
+  const user = await dataSources.userApi.getUser(id);
   return user;
 };
 
+const createUser = async (_, { data }, { dataSources }) => {
+  return dataSources.userApi.createUser(data);
+};
+
+const updateUser = async (_, { userId, data }, { dataSources }) => {
+  return dataSources.userApi.updateUser(userId, data);
+};
+
+const deleteUser = async (_, { userId }, { dataSources }) => {
+  return dataSources.userApi.deleteUser(userId);
+};
+
 const posts = ({ id }, _, { dataSources }) => {
-  return dataSources.postAPi.batchLoadByUserId(id);
+  return dataSources.postApi.batchLoadByUserId(id);
 };
 
 export const userResolvers = {
-  Query: {
-    user,
-    users,
-  },
+  Query: { user, users },
+  Mutation: { createUser, updateUser, deleteUser },
   User: { posts },
 };
