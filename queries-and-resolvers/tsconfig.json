@@ -5,7 +5,12 @@
     "outDir": "dist",
     "sourceMap": true,
     "types": ["node"],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "plugins": [
+      {
+        "name": "typescript-dotenv"
+      }
+    ]
   },
   "include": [
     "src/**/*.ts"

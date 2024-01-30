@@ -1,5 +1,9 @@
 import { RESTDataSource } from 'apollo-datasource-rest'
 import { makePostDataLoader } from '../loaders/postLoader'
+import * as dotenv from 'dotenv';
+import { createPostFn, updatePostFn } from '../utils/post-repository';
+import { PostInput } from '../types';
+dotenv.config();
 
 export class PostsApi extends RESTDataSource {
   private dataLoader: ReturnType<typeof makePostDataLoader>
@@ -26,8 +30,12 @@ export class PostsApi extends RESTDataSource {
     })
   }
 
-  async createPost(postData) {
-    
+  async createPost(postData: PostInput) {
+    return createPostFn(postData, this)
+  }
+
+  async updatePost(postId: string, postData: PostInput) {
+    return updatePostFn(postId, postData, this);
   }
 
   batchLoadByUserId(id: string) {

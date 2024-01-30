@@ -1,5 +1,7 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 import { makeUserDataLoader } from '../loaders/userLoader';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 export class UsersApi extends RESTDataSource {
   private dataLoader: ReturnType<typeof makeUserDataLoader>

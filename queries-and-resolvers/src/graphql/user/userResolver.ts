@@ -6,7 +6,8 @@ const users = async (_, { input }, { dataSources }) => {
 };
 
 const user = async (_, { id }, { dataSources }) => {
-  const user = await dataSources.getUser('/' + id);
+  console.log(dataSources)
+  const user = await dataSources.postAPi.getUser('/' + id);
   return user;
 };
 
