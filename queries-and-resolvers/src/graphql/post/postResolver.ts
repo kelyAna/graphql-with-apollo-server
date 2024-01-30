@@ -20,8 +20,12 @@ const createPost = async (_, { input }, { dataSources }) => {
   return dataSources.postApi.createPost(input);
 };
 
+const deletePost = async (_, { postId }, { dataSources }) => {
+  return dataSources.postApi.deletePost(postId);
+};
+
 export const postResolvers = {
   Query: { post, posts },
   Post: { user },
-  Mutation: { createPost, updatePost },
+  Mutation: { createPost, updatePost, deletePost },
 };
