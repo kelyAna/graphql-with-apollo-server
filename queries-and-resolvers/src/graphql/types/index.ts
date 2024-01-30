@@ -18,6 +18,8 @@ export type UserInput = {
   firstName: string
   lastName: string
   userName: string
+  password: string
+  passwordHash: string
 }
 
 interface Post {

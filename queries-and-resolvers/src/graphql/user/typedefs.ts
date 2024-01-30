@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-core';
+import { gql } from 'apollo-server-core'
 
 export const userTypeDefs = gql`
   extend type Query {
@@ -26,11 +26,13 @@ export const userTypeDefs = gql`
     firstName: String!
     lastName: String!
     userName: String!
+    password: String!
   }
 
   input UpdateUserInput {
     firstName: String
     lastName: String
     userName: String
+    password: String
   }
-`;
+`
