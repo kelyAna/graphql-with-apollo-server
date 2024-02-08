@@ -39,4 +39,5 @@ export interface User {
   indexRef: number
   createdAt: string
   posts: Post[]
+  passwordHash: string
 }

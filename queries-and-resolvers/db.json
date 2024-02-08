@@ -159,6 +159,15 @@
       "userName": "marcia_carvalho81",
       "indexRef": 1,
       "createdAt": "2016-12-08T00:49:39.870Z"
+    },
+    {
+      "id": "ae77",
+      "firstName": "testando",
+      "lastName": "testando",
+      "userName": "anaKely",
+      "passwordHash": "$2b$12$rwU98K9Aui5il6ynqhZxpe.Uzz6WhbPYAzQP9YXJ1f4AM5Mk9u9nu",
+      "indexRef": 1,
+      "createdAt": "2024-02-07T13:35:53.985Z"
     }
   ],
   "posts": [

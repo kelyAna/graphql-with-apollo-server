@@ -13,7 +13,11 @@ export const createPostFn = async (postData, dataSource) => {
   return await dataSource.post('', { ...postInfo })
 }
 
-export const updatePostFn = async (postId: string, postData: PostInput, dataSource) => {
+export const updatePostFn = async (
+  postId: string,
+  postData: PostInput,
+  dataSource,
+) => {
   if (!postId) {
     throw new ValidationError('Missing postId')
   }
@@ -59,7 +63,7 @@ const createPostInfo = async (postData: PostInput, dataSource) => {
     _sort: 'indexRef',
   })
 
-  const indexRef = indexRefPost[0].indexRef + 1
+  const indexRef = indexRefPost[0]?.indexRef + 1
 
   return {
     title,
@@ -68,5 +72,4 @@ const createPostInfo = async (postData: PostInput, dataSource) => {
     indexRef,
     createdAt: new Date().toISOString(),
   }
-
 }
