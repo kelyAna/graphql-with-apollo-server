@@ -167,7 +167,8 @@
       "userName": "anaKely",
       "passwordHash": "$2b$12$rwU98K9Aui5il6ynqhZxpe.Uzz6WhbPYAzQP9YXJ1f4AM5Mk9u9nu",
       "indexRef": 1,
-      "createdAt": "2024-02-07T13:35:53.985Z"
+      "createdAt": "2024-02-07T13:35:53.985Z",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZTc3IiwiaWF0IjoxNzA4MTI3Mzk0LCJleHAiOjE3MDg3MzIxOTR9.fm3kagpguoxd7hawLYslrjiq4Jpnjd7drJLEnIM-fzo"
     }
   ],
   "posts": [

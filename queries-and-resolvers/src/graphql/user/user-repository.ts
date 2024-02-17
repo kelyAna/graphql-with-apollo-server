@@ -10,7 +10,6 @@ export const createUserFn = async (userData, dataSource) => {
     _order: 'desc',
   })
 
-  // Check if indexRefUser has any data
   const indexRef = indexRefUser.length > 0 ? indexRefUser[0]?.indexRef + 1 : 1
 
   const foundUser = await userExists(userData.userName, dataSource)

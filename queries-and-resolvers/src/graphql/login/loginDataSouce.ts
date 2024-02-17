@@ -26,6 +26,18 @@ export class LoginApi extends RESTDataSource {
 
     const token = this.createJwtToken({ userId })
 
+    await this.patch(
+      userId,
+      {
+        token,
+      },
+      {
+        cacheOptions: {
+          ttl: 0,
+        },
+      },
+    )
+
     return {
       userId,
       token,
