@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-core';
+import { gql } from 'apollo-server-core'
 
 export const postTypeDefs = gql`
   extend type Query {
@@ -7,7 +7,7 @@ export const postTypeDefs = gql`
   }
 
   extend type Mutation {
-    createPost(input: CreatePostInput!): Post!
+    createPost(data: CreatePostInput!): Post!
     updatePost(postId: ID!, data: UpdatePostInput!): Post!
     deletePost(postId: ID!): Boolean!
   }
@@ -24,12 +24,10 @@ export const postTypeDefs = gql`
   input CreatePostInput {
     title: String!
     body: String!
-    userId: String!
   }
 
   input UpdatePostInput {
     title: String
     body: String
-    userId: String
   }
-`;
+`

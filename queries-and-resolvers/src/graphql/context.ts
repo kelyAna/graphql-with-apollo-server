@@ -5,6 +5,8 @@ const authorizeUser = async (req) => {
   const { headers } = req
   const { authorization } = headers
 
+  console.log('authorization', authorization)
+
   try {
     const [_bearer, token] = authorization.split(' ')
     const { userId } = jwt.verify(token, process.env.JWT_SECRET)

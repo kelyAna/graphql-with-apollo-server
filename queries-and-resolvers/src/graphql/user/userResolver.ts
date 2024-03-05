@@ -1,4 +1,5 @@
 import { AuthenticationError } from 'apollo-server'
+import { checkOwner } from '../login/utils/checkIsLoggedIn'
 
 const users = async (_, { input }, { dataSources }) => {
   const users = await dataSources.userApi.getUsers(input)
@@ -14,14 +15,18 @@ const createUser = async (_, { data }, { dataSources }) => {
   return dataSources.userApi.createUser(data)
 }
 
-const updateUser = async (_, { userId, data }, { dataSources }) => {
+const updateUser = async (
+  _,
+  { userId, data },
+  { dataSources, loggedUserId },
+) => {
+  checkOwner(userId, loggedUserId)
+
   return dataSources.userApi.updateUser(userId, data)
 }
 
 const deleteUser = async (_, { userId }, { dataSources, loggedUserId }) => {
-  if (!loggedUserId) {
-    throw new AuthenticationError('You have to login')
-  }
+  checkOwner(userId, loggedUserId)
   return dataSources.userApi.deleteUser(userId)
 }
 

@@ -1,5 +1,5 @@
 import { AuthenticationError } from 'apollo-server-errors'
-import { checkIsLoggedIn } from '../utils/checkIsLoggedIn'
+import { checkIsLoggedIn } from '../login/utils/checkIsLoggedIn'
 
 const post = async (_, { id }, { dataSources }) => {
   const post = dataSources.postApi.getPost(id)
@@ -7,21 +7,31 @@ const post = async (_, { id }, { dataSources }) => {
 }
 
 const posts = async (_, { input }, { dataSources, loggedUserId }) => {
-  checkIsLoggedIn(loggedUserId)
+  if (!loggedUserId) {
+    throw new AuthenticationError('You have to log in')
+  }
 
   const posts = dataSources.postApi.getPosts(input)
   return posts
 }
 
-const createPost = async (_, { data }, { dataSources }) => {
+const createPost = async (_, { data }, { dataSources, loggedUserId }) => {
+  checkIsLoggedIn(loggedUserId)
+  data.userId = loggedUserId
   return dataSources.postApi.createPost(data)
 }
 
-const updatePost = async (_, { postId, data }, { dataSources }) => {
+const updatePost = async (
+  _,
+  { postId, data },
+  { dataSources, loggedUserId },
+) => {
+  checkIsLoggedIn(loggedUserId)
   return dataSources.postApi.updatePost(postId, data)
 }
 
-const deletePost = async (_, { postId }, { dataSources }) => {
+const deletePost = async (_, { postId }, { dataSources, loggedUserId }) => {
+  checkIsLoggedIn(loggedUserId)
   return dataSources.postApi.deletePost(postId)
 }
 

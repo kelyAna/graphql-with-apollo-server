@@ -1,4 +1,4 @@
-import { UserInput } from '../types'
+import { UserInput } from '../../types'
 import { validateUserName } from './validateUserName'
 import { validateUserPassword } from './validateUserPassword'
 import bcrypt from 'bcrypt'
